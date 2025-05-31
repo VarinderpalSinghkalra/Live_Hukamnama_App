@@ -1,0 +1,14 @@
+steps:
+  # Step 1: Use OpenJDK image to run Gradle build
+  - name: 'gcr.io/cloud-builders/java'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        ./gradlew clean assembleDebug
+
+artifacts:
+  objects:
+    location: 'gs://YOUR_BUCKET_NAME/hukamnama-app-artifacts/'
+    paths:
+      - app/build/outputs/**/*.apk

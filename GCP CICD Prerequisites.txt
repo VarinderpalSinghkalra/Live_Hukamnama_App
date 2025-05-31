@@ -1,0 +1,45 @@
+✅ 2. Prerequisites
+🔧 Enable GCP APIs:
+Cloud Build API
+
+Artifact Registry (optional)
+
+Cloud Storage API
+
+
+☁️ Create a GCS bucket to store artifacts:
+
+gsutil mb -p YOUR_PROJECT_ID gs://YOUR_BUCKET_NAME
+
+
+✅ 3. Trigger Setup (CI/CD Automation)
+Go to Cloud Build > Triggers in Google Cloud Console.
+
+Create a trigger that listens to GitHub pushes or tags.
+
+Set the build config file to cloudbuild.yaml.
+
+✅ 4. Full CI/CD Flow
+Push to GitHub
+
+Cloud Build detects the push.
+
+Runs Gradle build to compile the APK.
+
+Uploads the output .apk to Cloud Storage.
+
+✅ Optional: Docker-based Build
+If you're building the app via Docker (e.g., using the Dockerfile we wrote earlier), use this cloudbuild.yaml:
+
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/hukamnama-app', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['run', '--rm', '-v', '/workspace:/app', 'gcr.io/$PROJECT_ID/hukamnama-app']
+
+images:
+  - 'gcr.io/$PROJECT_ID/hukamnama-app'
+
+
+

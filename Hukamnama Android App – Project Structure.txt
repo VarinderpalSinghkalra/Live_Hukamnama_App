@@ -1,0 +1,24 @@
+✅ Hukamnama Android App – Project Structure
+hukamnama-app/
+├── app/
+│   ├── src/
+│   │   └── main/
+│   │       ├── java/com/example/hukamnamaapp/
+│   │       │   ├── model/
+│   │       │   │   ├── Hukamnama.java
+│   │       │   │   └── HukamnamaResponse.java
+│   │       │   ├── network/
+│   │       │   │   ├── ApiService.java
+│   │       │   │   └── RetrofitClient.java
+│   │       │   ├── repository/
+│   │       │   │   └── HukamnamaRepository.java
+│   │       │   ├── viewmodel/
+│   │       │   │   └── HukamnamaViewModel.java
+│   │       │   └── MainActivity.java
+│   │       └── res/layout/
+│   │           └── activity_main.xml
+│   └── build.gradle
+├── Dockerfile
+├── cloudbuild.yaml
+├── build.gradle
+└── settings.gradle

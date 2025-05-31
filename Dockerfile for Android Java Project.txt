@@ -1,0 +1,56 @@
+# Use official OpenJDK image
+FROM openjdk:11-jdk
+
+# Set environment variables for Android SDK
+ENV ANDROID_SDK_ROOT /opt/android-sdk
+ENV PATH ${PATH}:${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin:${ANDROID_SDK_ROOT}/platform-tools
+
+# Install required dependencies
+RUN apt-get update && apt-get install -y wget unzip git
+
+# Download Android SDK Command Line Tools
+RUN mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools && \
+    cd ${ANDROID_SDK_ROOT}/cmdline-tools && \
+    wget https://dl.google.com/android/repository/commandlinetools-linux-10406996_latest.zip -O tools.zip && \
+    unzip tools.zip && rm tools.zip && \
+    mv cmdline-tools latest
+
+# Accept licenses and install build tools and platforms
+RUN yes | sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --licenses
+RUN sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.2"
+
+# Set work directory
+WORKDIR /app
+
+# Copy project files
+COPY . /app
+
+# Give Gradle wrapper permission to execute
+RUN chmod +x ./gradlew
+
+# Build the project
+RUN ./gradlew assembleDebug
+
+# Final image info
+CMD ["./gradlew", "assembleDebug"]
+
+
+
+
+
+📦 Build and Run the Docker Image
+Place the Dockerfile at the root of your Android project.
+
+Run this in terminal:
+
+docker build -t hukamnama-app .
+
+
+To run the build:
+
+docker run --rm -v $(pwd)/app:/app hukamnama-app
+
+
+After the build, the APK will be located at:
+
+app/build/outputs/apk/debug/app-debug.apk
