@@ -1,0 +1,18 @@
+✅ Requirements
+Enable Cloud Build API and Cloud Storage.
+
+Create a GCS bucket with:
+
+gsutil mb gs://your-bucket-name
+
+Replace YOUR_BUCKET_NAME in cloudbuild.yaml.
+
+🚀 Trigger CI/CD
+Push your code to GitHub.
+
+In GCP Console, go to Cloud Build → Triggers.
+
+Create a trigger to build on every push to your branch.
+
+Reference cloudbuild.yaml in the repo root.
+

@@ -1,0 +1,14 @@
+steps:
+  # Step 1: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/hukamnama-app', '.']
+
+  # Step 2: Run the container to build the app
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['run', '--rm', 'gcr.io/$PROJECT_ID/hukamnama-app']
+
+# Optional: Upload APK to Google Cloud Storage
+artifacts:
+  objects:
+    location: 'gs://YOUR_BUCKET_NAME/hukamnama-artifacts/'
+    paths: ['app/build/outputs/**/*.apk']
