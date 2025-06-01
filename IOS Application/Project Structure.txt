@@ -1,0 +1,16 @@
+HukamnamaIOS/
+├── HukamnamaIOS.xcodeproj
+├── HukamnamaIOS/
+│   ├── Models/
+│   │   └── Hukamnama.swift
+│   ├── Services/
+│   │   └── ApiService.swift
+│   ├── ViewModels/
+│   │   └── HukamnamaViewModel.swift
+│   ├── Views/
+│   │   └── ContentView.swift
+│   └── Resources/
+│       └── Assets.xcassets, Info.plist, LaunchScreen.storyboard
+├── Dockerfile
+├── cloudbuild.yaml
+└── README.md

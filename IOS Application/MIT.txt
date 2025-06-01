@@ -1,0 +1,20 @@
+
+---
+
+## ➕ Optional Enhancements
+
+- 📥 Download and store Hukamnama offline
+- 📅 Select past dates
+- 🌙 Dark mode
+- 🛠 SwiftLint + unit tests
+- 📤 Upload builds with Fastlane
+
+---
+
+Would you like:
+
+- A **complete Swift project repo template**?
+- A downloadable `.zip` with the full structure?
+- A **GitHub Actions CI/CD alternative** for iOS instead of GCP?
+
+Let me know and I’ll prepare exactly what you need.

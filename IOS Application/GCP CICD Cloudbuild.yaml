@@ -1,0 +1,6 @@
+steps:
+  - name: 'gcr.io/cloud-builders/git'
+    entrypoint: bash
+    args: ['-c', 'echo "Run unit tests or SwiftLint here"']
+
+timeout: 600s
